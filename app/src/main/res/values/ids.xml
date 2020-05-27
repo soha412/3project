@@ -2,4 +2,5 @@
 <resources>
     <item name="textview2" type="id" />
     <item name="textView" type="id" />
+    <item name="imageView" type="id" />
 </resources>
