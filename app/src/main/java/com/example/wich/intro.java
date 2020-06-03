@@ -26,4 +26,10 @@ public class intro extends AppCompatActivity {
         handler.postDelayed(r, 2000);
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        handler.removeCallbacks(r);
+    }
+
 }

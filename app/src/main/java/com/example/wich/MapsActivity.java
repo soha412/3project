@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import androidx.fragment.app.FragmentActivity;
@@ -28,16 +29,19 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        super.onCreateOptionsMenu(menu);
-        menu.add(0,1,0, "위성지도");
-        menu.add(0,2,0, "일반지도");
-        menu.add(0,2,0, "성결대학교");
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.mainmenu,menu);
+       super.onCreateOptionsMenu(menu);
+       menu.add(0,1,0, "위성지도");
+       menu.add(0,2,0, "일반지도");
+       menu.add(0,2,0, "성결대학교");
         return true;
     }
 
@@ -56,6 +60,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
+
         mMap = googleMap;
 
 
@@ -70,13 +75,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.addMarker(new MarkerOptions().position(cafe2).title("EDIYA").icon(BitmapDescriptorFactory.fromResource(R.drawable.marker)));
 
         LatLng cafe3 = new LatLng(37.384366, 126.933919);
-        mMap.addMarker(new MarkerOptions().position(cafe3).title("Hollis Coffe").icon(BitmapDescriptorFactory.fromResource(R.drawable.marker)));
+        mMap.addMarker(new MarkerOptions().position(cafe3).title("Hollis Coffee").icon(BitmapDescriptorFactory.fromResource(R.drawable.marker)));
 
         LatLng cafe4 = new LatLng(37.384792, 126.933429);
         mMap.addMarker(new MarkerOptions().position(cafe4).title("Can Coffee").icon(BitmapDescriptorFactory.fromResource(R.drawable.marker)));
 
         LatLng cafe5 = new LatLng(37.384946, 126.933438);
-        mMap.addMarker(new MarkerOptions().position(cafe5).title("6th street Coffe Shop").icon(BitmapDescriptorFactory.fromResource(R.drawable.marker)));
+        mMap.addMarker(new MarkerOptions().position(cafe5).title("6th street Coffee Shop").icon(BitmapDescriptorFactory.fromResource(R.drawable.marker)));
 
         LatLng cafe6 = new LatLng(37.386432, 126.933400);
         mMap.addMarker(new MarkerOptions().position(cafe6).title("TwoSome Place").icon(BitmapDescriptorFactory.fromResource(R.drawable.marker)));
@@ -88,7 +93,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.addMarker(new MarkerOptions().position(cafe8).title("KKun Fishing Cafe").icon(BitmapDescriptorFactory.fromResource(R.drawable.marker)));
 
         LatLng cafe9 = new LatLng(37.385332, 126.932099);
-        mMap.addMarker(new MarkerOptions().position(cafe9).title("Coffe GruNamu").icon(BitmapDescriptorFactory.fromResource(R.drawable.marker)));
+        mMap.addMarker(new MarkerOptions().position(cafe9).title("Coffee GruNamu").icon(BitmapDescriptorFactory.fromResource(R.drawable.marker)));
 
         LatLng cafe10 = new LatLng(37.384865, 126.933737);
         mMap.addMarker(new MarkerOptions().position(cafe10).title("Palk's Coffee").icon(BitmapDescriptorFactory.fromResource(R.drawable.marker)));
@@ -145,15 +150,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     intent.putExtra("title","EDIYA");
                     startActivity(intent);
                 }
-                if(!TextUtils.isEmpty(title) && "Hollis Coffe".equals(title)) {
+                if(!TextUtils.isEmpty(title) && "Hollis Coffee".equals(title)) {
                     Intent intent = new Intent(getApplicationContext(),InfoActivity.class);
+                    intent.putExtra("title","Hollis Coffee");
                     startActivity(intent);
                 }
                 if(!TextUtils.isEmpty(title) && "Can Coffee".equals(title)) {
                     Intent intent = new Intent(getApplicationContext(),InfoActivity.class);
                     startActivity(intent);
                 }
-                if(!TextUtils.isEmpty(title) && "6th street Coffe Shop".equals(title)) {
+                if(!TextUtils.isEmpty(title) && "6th street Coffee Shop".equals(title)) {
                     Intent intent = new Intent(getApplicationContext(),InfoActivity.class);
                     startActivity(intent);
                 }
@@ -165,7 +171,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     Intent intent = new Intent(getApplicationContext(),InfoActivity.class);
                     startActivity(intent);
                 }
-                if(!TextUtils.isEmpty(title) && "Coffe GruNamu".equals(title)) {
+                if(!TextUtils.isEmpty(title) && "Coffee GruNamu".equals(title)) {
                     Intent intent = new Intent(getApplicationContext(),InfoActivity.class);
                     startActivity(intent);
                 }

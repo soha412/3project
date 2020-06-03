@@ -33,7 +33,63 @@ public class InfoActivity extends AppCompatActivity {
             textView.setText(" EDIYA ");
             imageView1.setImageResource(R.drawable.ediya);
         }
-        // 나머지 카페 복붙
+        if(title.equals("Hollis Coffee")) {
+            textView.setText(" 맛있는 롱커피 입니다");
+        }
+        if(title.equals("Can Coffee")) {
+            textView.setText(" 맛있는 롱커피 입니다");
+        }
+        if(title.equals("6th street Coffee Shop")) {
+            textView.setText(" 맛있는 롱커피 입니다");
+        }
+        if(title.equals("TwoSome Place")) {
+            textView.setText(" 맛있는 롱커피 입니다");
+        }
+        if(title.equals("mumus Cafe")) {
+            textView.setText(" 맛있는 롱커피 입니다");
+        }
+        if(title.equals("KKun Fishing Cafe")) {
+            textView.setText(" 맛있는 롱커피 입니다");
+        }
+        if(title.equals("Coffee GruNamu")) {
+            textView.setText(" 맛있는 롱커피 입니다");
+        }
+        if(title.equals("Palk's Coffee")) {
+            textView.setText(" 맛있는 롱커피 입니다");
+        }
+        if(title.equals("Coffee GruNamu")) {
+            textView.setText(" 맛있는 롱커피 입니다");
+        }
+        if(title.equals("Cafe Bianco")) {
+            textView.setText(" 맛있는 롱커피 입니다");
+        }
+        if(title.equals("쏠렌자라")) {
+            textView.setText(" 맛있는 롱커피 입니다");
+        }
+        if(title.equals("파스쿠찌 명학점")) {
+            textView.setText(" 맛있는 롱커피 입니다");
+        }
+        if(title.equals("엔제리너스")) {
+            textView.setText(" 맛있는 롱커피 입니다");
+        }
+        if(title.equals("좋은사람들")) {
+            textView.setText(" 맛있는 롱커피 입니다");
+        }
+        if(title.equals("커피 본")) {
+            textView.setText(" 맛있는 롱커피 입니다");
+        }
+        if(title.equals("커피 베이")) {
+            textView.setText(" 맛있는 롱커피 입니다");
+        }
+        if(title.equals("향기가 머무는 커피숍")) {
+            textView.setText(" 맛있는 롱커피 입니다");
+        }
+        if(title.equals("카페하로")) {
+            textView.setText(" 맛있는 롱커피 입니다");
+        }
+
+
+
 
 
         Button Revturn = (Button) findViewById(R.id.RevButton);
@@ -43,10 +99,10 @@ public class InfoActivity extends AppCompatActivity {
             public void onClick(View v) {
                 finish();
             }
-        });
+        });  // 뒤로가기
 
         Revturn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+            public void onClick(View v) {        // 리뷰 보기
                 Intent intentview = new Intent(getApplicationContext(),ReView.class);
                 startActivity(intentview);
             }
