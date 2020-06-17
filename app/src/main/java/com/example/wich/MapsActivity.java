@@ -5,9 +5,10 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import androidx.fragment.app.FragmentActivity;
 
@@ -28,7 +29,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -36,12 +36,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.mainmenu,menu);
-       super.onCreateOptionsMenu(menu);
-       menu.add(0,1,0, "위성지도");
-       menu.add(0,2,0, "일반지도");
-       menu.add(0,2,0, "성결대학교");
+       //MenuInflater inflater = getMenuInflater();
+       //inflater.inflate(R.menu.mainmenu,menu);
+      super.onCreateOptionsMenu(menu);
+      menu.add(0,1,0,"위성지도");
+      menu.add(0,2,0, "일반지도");
+      menu.add(0,3,0, "성결대학교");
         return true;
     }
 
@@ -50,10 +50,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         switch (item.getItemId()){
             case 1:
                 mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+                return true;
             case 2:
                 mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+                return true;
             case 3:
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(37.380205, 126.928655), 17));
+                return true;
         }
         return false;
     }
@@ -63,8 +66,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         mMap = googleMap;
 
-
-        // Add a marker in Sydney and move the camera
+        // 구글맵 API 내 카페 위치표시
         final LatLng sungkyul = new LatLng(37.379896, 126.928844);
         mMap.addMarker(new MarkerOptions().position(sungkyul).title("sungkyulUVI").icon(BitmapDescriptorFactory.fromResource(R.drawable.school)));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sungkyul));
@@ -130,6 +132,26 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.school), 100, 100, false);
 
 
+        // TaKe out 판별
+        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+
+                Log.d("getTitle", "getTitle() =" + marker.getTitle());
+
+                if(marker.getTitle().equals("sungkyulUVI"))
+                {
+                    Toast.makeText(getApplicationContext(),"성결대학교 입니다",Toast.LENGTH_SHORT).show();
+                }
+                if(marker.getTitle().equals("Long Coffee"))
+                {
+                    Toast.makeText(getApplicationContext(),"Take out 전문점입니다",Toast.LENGTH_SHORT).show();
+                }
+                return false;
+            }
+        });
+
+        // 정보액티비티 이동
         mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
             @Override
             public void onInfoWindowClick(Marker marker) {

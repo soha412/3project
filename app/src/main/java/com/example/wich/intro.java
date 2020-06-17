@@ -15,6 +15,7 @@ public class intro extends AppCompatActivity {
             startActivity(intent);
         }
     };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

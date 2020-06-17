@@ -4,14 +4,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+
 public class InfoActivity extends AppCompatActivity {
 
-
+    EditText reviewin;
+    Button ipButton;
+    ImageButton imageButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,11 +94,12 @@ public class InfoActivity extends AppCompatActivity {
         }
 
 
-
-
-
         Button Revturn = (Button) findViewById(R.id.RevButton);
         Button BReturn = (Button) findViewById(R.id.BRutton);
+
+        imageButton = findViewById(R.id.imageButton);  // input
+
+
 
         BReturn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -107,5 +113,10 @@ public class InfoActivity extends AppCompatActivity {
                 startActivity(intentview);
             }
         });
-}
-}
+
+
+
+
+
+
+    }}
